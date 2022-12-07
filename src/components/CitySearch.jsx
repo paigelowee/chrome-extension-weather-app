@@ -13,7 +13,7 @@ const CitySearch = ({ setCity, getWeather, city }) => {
         />
         <InputRightElement
           children={<SearchIcon color="grey" />}
-          onClick={() => getWeather()}
+          onClick={() => getWeather(city)}
           style={{ cursor: "pointer" }}
         />
       </InputGroup>

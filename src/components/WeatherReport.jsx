@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import React from "react";
+import { Box } from "@chakra-ui/react";
 
 import TodaysWeather from "./TodaysWeather.jsx";
 import WeatherForecast from "./WeatherForecast.jsx";

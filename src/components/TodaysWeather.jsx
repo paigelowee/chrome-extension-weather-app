@@ -4,8 +4,6 @@ import { MdDeviceThermostat, MdNorthEast } from "react-icons/md";
 
 import moment from "moment";
 
-// const image = require(".../images/logo.png");
-
 const TodaysWeather = ({ weather }) => {
   const tempDegrees = Math.round(weather.main.temp - 273.15);
 
@@ -27,7 +25,6 @@ const TodaysWeather = ({ weather }) => {
       <Text style={{ marginBottom: 5 }} size="md">
         {moment().format("MMMM Do YYYY, h:mm a")}
       </Text>
-      {console.log(weather)}
       <Box style={{ display: "flex", alignItems: "center" }}>
         <div
           style={{
@@ -35,6 +32,7 @@ const TodaysWeather = ({ weather }) => {
             backgroundSize: "cover",
             width: 60,
             height: 60,
+            marginRight: 10,
           }}
         ></div>
         <Box style={{}}>
@@ -43,11 +41,11 @@ const TodaysWeather = ({ weather }) => {
           </Text>
           <Box style={{ display: "flex" }}>
             <Text style={{ marginRight: 5 }}>
-              <Icon as={MdDeviceThermostat} />
+              <Icon as={MdDeviceThermostat} height={2.5} />
               {tempDegrees}º
             </Text>
             <Text>
-              <Icon as={MdNorthEast} />
+              <Icon as={MdNorthEast} height={2.5} />
               {weather.wind.speed}mph
             </Text>
           </Box>

@@ -15,36 +15,38 @@ export function App() {
     chrome.storage.local.get("city", (res) => {
       if (res?.city) {
         setCity(res.city);
-        getWeather();
+        getWeather(res.city);
       }
     });
   }, []);
 
   // function to get weather for current city
-  const getWeather = useCallback(() => {
-    console.log("called");
-    // update the city in local storage
-    chrome.storage.local.set({ city: city });
-    fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        setForecast(res);
-      });
+  const getWeather = useCallback(
+    (city) => {
+      // update the city in local storage
+      chrome.storage.local.set({ city: city });
+      fetch(
+        `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`
+      )
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          setForecast(res);
+        });
 
-    fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        setWeather(res);
-      });
-  }, [city]);
+      fetch(
+        `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+      )
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          setWeather(res);
+        });
+    },
+    [city]
+  );
 
   return (
     <ChakraProvider>
